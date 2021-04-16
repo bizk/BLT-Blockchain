@@ -15,6 +15,12 @@ function digest(block:Block): string {
     return ""
 }
 
-function mineBlock(params:type) {
-  
+const ZEROES = "00000000000000000000000000000000000000000000000000000000000000000000000000000"
+
+function mineBlock(difficulty: int, block: Block) {
+  let nonce = 0;
+  while(sha256(generateRandomString()).substr(0, difficulty) !== ZEROES.substr(0, difficulty)) {
+    nonce += 1
+    hash = block.calculateHash;
+  }
 }
