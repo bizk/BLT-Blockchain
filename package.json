@@ -8,5 +8,8 @@
       "integrity": "sha512-V+evlYHZnQkaz8TRBuxTA92yZBPotr5H+WhQ7bD3hZUndx5tGOa1fuCgeSjxAzM1RiN5IzvadIXTVefuuwZCRg==",
       "dev": true
     }
+  },
+  "devDependencies": {
+    "tslint": "^6.1.3"
   }
 }
