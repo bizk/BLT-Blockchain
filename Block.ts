@@ -1,17 +1,15 @@
   import { sha256 } from 'js-sha256';
 
  export class Block {
-    private objectString: string;
-    private index: int;
-    private timestamp: long;
+    private index: number;
+    private timestamp: number;
     private hash: string;
     private previousHash: string;
     private data: string;
-    private nonce: int;
+    private nonce: number;
 
-    constructor(index: Int8Array, timestamp: long, previousHash: string, data: string) {
+    constructor(index: number, timestamp: number, previousHash: string, data: string) {
         let rand = generateRandomString(); 
-        this.objectString = rand //We simulate the string value of the whole object bytes to save time
         this.hash = sha256(rand)
         this.index = index;
         this.timestamp = timestamp;
@@ -19,15 +17,11 @@
         this.data = data
     }
 
-    calculateHash(): string {
-        return this.hash
-    }
-
-    getIndex(): int {
+    getIndex(): number {
         return this.index;
       }
     
-    getTimestamp(): long {
+    getTimestamp(): number {
         return this.timestamp;
     }
     
@@ -43,8 +37,8 @@
         return this.data;
     }
     
-    str(): string {
-        return String(this.index) + String(this.timestamp) + this.previousHash + this.data + String(this.nonce);
+    str(): String {
+        return "" + String(this.index)  + String(this.timestamp) + this.previousHash + this.data + String(this.nonce);
     }
     
     toString(): string {
@@ -60,14 +54,23 @@
         return builder;
       }
         
-      calculateHash(block: Block): string {
+      calculateHash(block: Block): String {
+        let blockString: String = block.str();
+        let blockDigest: String = sha256(blockString.toString())
+
+        return blockDigest
+      }
+
+      mineBlock(difficulty: number) {
         let nonce = 0;
         while(sha256(generateRandomString()).substr(0, difficulty) !== ZEROES.substr(0, difficulty)) {
           nonce += 1
-          this.hash = block.calculateHash(this);
+          this.hash = this.calculateHash(this).toString();
         }
         this.nonce
           
         return null;
       }
 }
+
+const ZEROES = "00000000000000000000000000000000000000000000000000000000000000000000000000000"

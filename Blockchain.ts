@@ -1,7 +1,7 @@
 import { Block } from "./Block";
 
 export class Blockchain {
-    private difficulty: int;
+    private difficulty: number;
     private blocks: Array<Block>;
     
     constructor(parameters) {
@@ -13,7 +13,7 @@ export class Blockchain {
     }
 
     newBlock(data: string): Block {
-        latestBlock: Block = this.latestBlock();
+        let latestBlock: Block = this.latestBlock();
         return new Block(latestBlock.getIndex() + 1, Date.now(), latestBlock.getHash(), data);
     }   
 
