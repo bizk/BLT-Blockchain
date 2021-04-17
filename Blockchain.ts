@@ -49,7 +49,7 @@ export class Blockchain {
     isBlockChainValid(): boolean {
         if (!this.isFirstBlockValid()) return false;
 
-        for (let index = 0; index < this.blocks.length; index++) {
+        for (let index = 1; index < this.blocks.length; index++) {
             let currentBlock: Block = this.blocks[index]
             let previousBlock: Block = this.blocks[index - 1] 
             
