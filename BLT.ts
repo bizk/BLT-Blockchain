@@ -1,9 +1,7 @@
-const world = 'world';
+import { Blockchain } from './Blockchain';
 
-import { sha256 } from 'js-sha256';
+let blockchain: Blockchain = new Blockchain(1);
+blockchain.addBlock(blockchain.newBlock("CARLOS SANTIAGO YANZON"))
 
-import { Block } from "./Block";
-
-export function hello(word: string = world): string {
-  return `Hello ${world}! `;
-}
+console.log("Is blockchain valid?", blockchain.isBlockChainValid());
+console.log(blockchain)

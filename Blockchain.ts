@@ -5,8 +5,9 @@ export class Blockchain {
     private difficulty: number;
     private blocks: Array<Block>;
     
-    constructor(parameters) {
-        
+    constructor(difficulty: number) {
+        this.difficulty = difficulty
+        this.blocks = new Array;
     }
 
     latestBlock(): Block {
@@ -15,7 +16,9 @@ export class Blockchain {
 
     newBlock(data: string): Block {
         let latestBlock: Block = this.latestBlock();
-        return new Block(latestBlock.getIndex() + 1, Date.now(), latestBlock.getHash(), data);
+        if (latestBlock !== undefined) return new Block(latestBlock.getIndex() + 1, Date.now(), latestBlock.getHash(), data);
+
+        return new Block(0, Date.now(), "", data);
     }   
 
     addBlock(block: Block) {
