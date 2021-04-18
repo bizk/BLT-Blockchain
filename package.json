@@ -1,18 +1,41 @@
 {
-  "requires": true,
-  "lockfileVersion": 1,
+  "name": "blockchain",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "js-sha256": "^0.9.0"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.7",
+    "@testing-library/jest-dom": "^5.11.10",
+    "@testing-library/react": "^11.2.6",
+    "@testing-library/user-event": "^12.8.3",
+    "js-sha256": "^0.9.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
     "ts-node": "^9.1.1",
-    "typescript": "^4.2.4"
+    "typescript": "^4.2.4",
+    "web-vitals": "^1.1.1"
   },
-  "main": "dist/BLT.js",
-  "types": "dist/BLT.d.ts",
   "scripts": {
-    "start": "ts-node BLT.ts",
-    "build": "tsc"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
