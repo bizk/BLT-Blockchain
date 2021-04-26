@@ -16,7 +16,7 @@ import { generateRandomString } from './utils';
         this.timestamp = timestamp;
         this.previousHash = previousHash;
         this.data = data;
-        this.nonce = 0; // tuve que agregar esto para evitar un error
+        this.nonce = index;
     }
 
     getIndex(): number {
