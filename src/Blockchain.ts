@@ -33,9 +33,7 @@ export class Blockchain {
 
         if (firstBlock.getIndex() !== 0) return false;
         if (firstBlock.getPreviousHash() !== "") return false;
-        console.log("3", firstBlock.getHash(), calculateHash(firstBlock))
         if (firstBlock.getHash() === null || calculateHash(firstBlock) !== firstBlock.getHash()) return false;
-        console.log("4")
         return true;
     }
 
