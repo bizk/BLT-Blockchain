@@ -64,13 +64,11 @@ import { generateRandomString } from './utils';
       }
 
       mineBlock(difficulty: number) {
-        let nonce = 0;
         while(sha256(generateRandomString()).substr(0, difficulty) !== ZEROES.substr(0, difficulty)) {
-          nonce += 1
+          this.nonce += 1
           this.hash = this.calculateHash(this).toString();
         }
-        this.nonce = nonce
-          
+        
         return null;
       }
 }

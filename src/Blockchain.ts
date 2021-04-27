@@ -32,9 +32,10 @@ export class Blockchain {
         let firstBlock: Block = this.blocks[0];
 
         if (firstBlock.getIndex() !== 0) return false;
-        if (firstBlock.getPreviousHash() !== null) return false;
+        if (firstBlock.getPreviousHash() !== "") return false;
+        console.log("3", firstBlock.getHash(), calculateHash(firstBlock))
         if (firstBlock.getHash() === null || calculateHash(firstBlock) !== firstBlock.getHash()) return false;
-
+        console.log("4")
         return true;
     }
 
@@ -50,8 +51,8 @@ export class Blockchain {
     }
 
     isBlockChainValid(): boolean {
+        console.log("Was not here")
         if (!this.isFirstBlockValid()) return false;
-
         for (let index = 1; index < this.blocks.length; index++) {
             let currentBlock: Block = this.blocks[index]
             let previousBlock: Block = this.blocks[index - 1] 
