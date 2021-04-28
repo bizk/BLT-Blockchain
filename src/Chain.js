@@ -6,6 +6,22 @@ class Chain extends React.Component {
     this.state = { blocks: props.blocks };
   }
 
+  modifyField(key, field, message) {
+    let newBlocks = this.state.blocks;
+    console.log(newBlocks);
+    console.log(key);
+    console.log(field);
+    newBlocks[key][field] = prompt(message);
+    this.setState({ blocks: newBlocks });
+  }
+
+  deleteBlock(key) {
+    if (window.confirm("¿Borrar bloque?")) {
+      let newBlocks = this.state.blocks.filter((x) => x.index != key);
+      this.setState({ blocks: newBlocks });
+    }
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -13,15 +29,41 @@ class Chain extends React.Component {
           {this.state.blocks.map((listitem, k) => (
             <li key={k} className="block">
               <div className="region">
-                <p>Bloque #{listitem.index}</p>
-                <p>
+                <a onClick={() => this.deleteBlock(listitem.index)}>
+                  Bloque #{listitem.index} - <i>Borrar</i>
+                </a>
+                <br></br>
+                <a
+                  onClick={() => this.modifyField(k, "data", "Modificar Data")}
+                >
                   <strong>Data: {listitem.data}</strong>
-                </p>
-                <p>
+                </a>
+                <br></br>
+                <a
+                  onClick={() => this.modifyField(k, "hash", "Modificar Hash")}
+                >
                   Hash: {listitem.hash}
-                  <br></br>Previous Hash: {listitem.previousHash}
-                  <br></br>Timestamp: {listitem.timestamp}
-                </p>
+                </a>
+                <br></br>
+                <a
+                  onClick={() =>
+                    this.modifyField(
+                      k,
+                      "previousHash",
+                      "Modificar Previous Hash"
+                    )
+                  }
+                >
+                  Previous Hash: {listitem.previousHash}
+                </a>
+                <br></br>
+                <a
+                  onClick={() =>
+                    this.modifyField(k, "timestamp", "Modificar TimeStamp")
+                  }
+                >
+                  Timestamp: {listitem.timestamp}
+                </a>
               </div>
             </li>
           ))}

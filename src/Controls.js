@@ -35,9 +35,10 @@ class Controls extends React.Component {
   }
 
   verify() {
-    console.log(
-      "Is blockchain valid?",
+    alert(
       this.props.blockchain.isBlockChainValid()
+        ? "El Blockchain está Integro"
+        : "El Blockchain fue modificado"
     );
     console.log(this.props.blockchain);
     this.setState({ change: true });
