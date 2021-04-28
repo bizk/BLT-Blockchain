@@ -39,12 +39,16 @@ export class Blockchain {
 
     isValidNewBlock(newBlock: Block, previousBlock: Block): boolean {
         if (newBlock !== null && previousBlock !== null) {
-            if (newBlock.getIndex() + 1 !== newBlock.getIndex()) return false;
-            if (newBlock.getPreviousHash() === null || newBlock.getPreviousHash() !== previousBlock.getHash()) return false
-            if (newBlock.getHash() === null || newBlock.getHash() !== calculateHash(newBlock)) return false
-
+            console.log("1")
+            if (previousBlock.getIndex() + 1 !== newBlock.getIndex()) return false;
+            console.log("2")
+            if (newBlock.getPreviousHash() === "" || newBlock.getPreviousHash() !== previousBlock.getHash()) return false
+            console.log("3")
+            if (newBlock.getHash() === "" || newBlock.getHash() !== calculateHash(newBlock)) return false
+            console.log("4")
             return true
         }
+        console.log("5")
         return false 
     }
 
