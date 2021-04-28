@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class Chain extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { blocks: props.blocks };
+    this.state = { blocks: props.blocks, safeguardvalid: true };
   }
 
   modifyField(key, field, message) {
@@ -12,13 +12,13 @@ class Chain extends React.Component {
     console.log(key);
     console.log(field);
     newBlocks[key][field] = prompt(message);
-    this.setState({ blocks: newBlocks });
+    this.setState({ blocks: newBlocks, safeguardvalid: false });
   }
 
   deleteBlock(key) {
     if (window.confirm("¿Borrar bloque?")) {
       let newBlocks = this.state.blocks.filter((x) => x.index != key);
-      this.setState({ blocks: newBlocks });
+      this.setState({ blocks: newBlocks, safeguardvalid: false });
     }
   }
 
